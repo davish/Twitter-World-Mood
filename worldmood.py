@@ -1,6 +1,7 @@
 #!/usr/bin/python
 
 from twython.twython import Twython
+import json
 
 def findAll(s, s1):
   """
@@ -21,12 +22,12 @@ settings = json.load(open('settings.json')) # Loads the settings from the JSON f
 
 def query():
   """
-  Search twitter for 
+  Retrieve the most recent tweets
   """
   t = Twython()
   # Search twitter for recent tweets containing any letter in the latin alphabet
   biglist = []
-  countdown = [7,6,5,4,3,2,1]
+  countdown = [7,6,5,4,3,2,1] # Get 7 pages of tweets
   for x in countdown:
     search = t.search(q="a+OR+b+OR+c+OR+d+OR+e+OR+f+OR+g+OR+h+OR+i+OR+j+OR+k+OR+l+OR+m+OR+n+OR+o+OR+p+OR+q+OR+r+OR+s+OR+t+OR+u+OR+v+OR+w+OR+x+OR+y+OR+z",rpp=30, page = x)
     search = search['results']
@@ -47,11 +48,26 @@ def count():
   emotions = settings['emotions']
   opposites = settings['opposites']
 
+  scores = {} # Dict to hold the scores for the emotions
 
+  tweets = query() # get the tweets
+
+  for i in opposites:
+    positive = i['positive']
+    negative = i['negative']
+    score = 0
+    for x in emotions[positive]:
+      score = score + findAll(tweets, x) # Find all instances of the positive keyword and add it to the score
+    for x in emotions[negative]:
+      score = score - findAll(tweets, x) # Find all instances of the negative keyword and subtract it from the score
+    scores[positive] = score # Plop the score in the dict
+
+  return scores
   # "surprise": ["wow", "can't believe", "wtf", "unbelievable"],  what's the opposite of surprise?
   # "envy": ["wish", "envious", "jealous", "want", "why can't i"]  what's the opposite of envy?
 
-  return emotions
+
+print count()
 
 
 
