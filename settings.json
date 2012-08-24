@@ -5,9 +5,8 @@
   "happiness": ["happiest", "happy", "excited", "woot", "w00t"],
   "sadness": ["sad", "heartbroken", "upset", "depressed", "cry"],
   "excitement": ["can't wait", "excited", "awaiting", "wait"],
-  "fear": ["scared", "terrified", "afraid", "fearful"],
+  "fear": ["scared", "terrified", "afraid", "fearful"]
   }, 
-
   "opposites": [{"positive": "love", "negative": "anger"}, 
             {"positive": "happiness", "negative": "sadness"}, 
             {"positive": "excitement", "negative": "fear"}]
