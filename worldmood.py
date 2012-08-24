@@ -17,6 +17,7 @@ def findAll(s, s1):
 
 t = Twython()
 
+settings = json.load(open('settings.json')) # Loads the settings from the JSON file
 
 def query():
   """
@@ -43,24 +44,15 @@ def query():
   return texts
 
 def count():
-  emotions = {
-  "love": ["love"],
-  "anger": ["hate", "angry", "mad"],
-  "happiness": ["happiest", "happy", "excited", "woot", "w00t"],
-  "sadness": ["sad", "heartbroken", "upset", "depressed", "cry"],
-  "excitement": ["can't wait", "excited", "awaiting", "wait"],
-  "fear": ["scared", "terrified", "afraid", "fearful"],
+  emotions = settings['emotions']
+  opposites = settings['opposites']
 
-  "surprise": ["wow", "can't believe", "wtf", "unbelievable"], # what's the opposite of surprise?
-  "envy": ["wish", "envious", "jealous", "want", "why can't i"] # what's the opposite of envy?
-  }
 
-  opposites = [{'positive': 'love', 'negative': 'anger'}, 
-              {'positive': 'happiness', 'negative': 'sadness'}, 
-              {'positive': 'excitement', 'negative': 'fear'}]
-
+  # "surprise": ["wow", "can't believe", "wtf", "unbelievable"],  what's the opposite of surprise?
+  # "envy": ["wish", "envious", "jealous", "want", "why can't i"]  what's the opposite of envy?
 
   return emotions
-print query()
+
+
 
       
