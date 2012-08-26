@@ -2,6 +2,11 @@
 
 from twython.twython import Twython
 import json
+import argparse
+
+parser = argparse.ArgumentParser()
+parser.add_argument("--raw", help="spit out raw data", action = "store_true")
+args = parser.parse_args()
 
 def findAll(s, s1):
   """
@@ -29,7 +34,7 @@ def query():
   biglist = []
   countdown = [7,6,5,4,3,2,1] # Get 7 pages of tweets
   for x in countdown:
-    search = t.search(q="a+OR+b+OR+c+OR+d+OR+e+OR+f+OR+g+OR+h+OR+i+OR+j+OR+k+OR+l+OR+m+OR+n+OR+o+OR+p+OR+q+OR+r+OR+s+OR+t+OR+u+OR+v+OR+w+OR+x+OR+y+OR+z",rpp=30, page = x)
+    search = t.search(q="a+OR+b+OR+c+OR+d+OR+e+OR+f+OR+g+OR+h+OR+i+OR+j+OR+k+OR+l+OR+m+OR+n+OR+o+OR+p+OR+q+OR+r+OR+s+OR+t+OR+u+OR+v+OR+w+OR+x+OR+y+OR+z",rpp=30, result_type = "mixed" ,page = x)
     search = search['results']
     englishlist = []
     # Filter results to only english tweets
@@ -67,7 +72,19 @@ def count():
   # "envy": ["wish", "envious", "jealous", "want", "why can't i"]  what's the opposite of envy?
 
 
-print count()
+def raw_display():
+  c = count()
+  for k,v in c.items():
+    print "%s: %d" % (k,v)
+def display():
+  print "Natural Language display!"
+
+
+if args.raw:
+  raw_display()
+else:
+  display()
+
 
 
 
