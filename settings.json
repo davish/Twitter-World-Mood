@@ -2,12 +2,13 @@
 "emotions": {
   "love": ["love", "<3"],
   "anger": ["hate", "angry", "mad", "sucks", ">:("],
-  "happiness": ["happiest", "happy", "excited", "woot", "w00t", ":)"],
-  "sadness": ["sad", "heartbroken", "upset", "depressed", "cry", ":'(", ":-(", ":("],
-  "excitement": ["can't wait", "excited", "awaiting", "wait", ":D", ":-D"],
+  "happiness": ["happiest", "happy", "excited", "woot", "w00t", "ha ", ":-)"],
+  "sadness": ["sad", "heartbroken", "upset", "depressed", "cry", "ugh", "sucks", ":'(", ":("],
+  "excitement": ["can't wait", "excited", "awaiting", "wait", "pumped", "let's go", ":D", ":-D"],
   "fear": ["scared", "terrified", "afraid", "fearful", "not excited", "frightened", ":-/", ":/"]
   }, 
   "opposites": [{"positive": "love", "negative": "anger"}, 
             {"positive": "happiness", "negative": "sadness"}, 
-            {"positive": "excitement", "negative": "fear"}]
+            {"positive": "excitement", "negative": "fear"}],
+  "opps": {"love": "anger", "happiness": "sadness", "excitement": "fear"}
 }
